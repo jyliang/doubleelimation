@@ -21,6 +21,8 @@
 		4F81F8C519C36BE7000F58D7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F81F8A719C36BE7000F58D7 /* UIKit.framework */; };
 		4F81F8CD19C36BE7000F58D7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4F81F8CB19C36BE7000F58D7 /* InfoPlist.strings */; };
 		4F81F8CF19C36BE7000F58D7 /* DoubleElminationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F81F8CE19C36BE7000F58D7 /* DoubleElminationTests.m */; };
+		4F9E10BF19C36EB20058DDD3 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E10BE19C36EB20058DDD3 /* MainViewController.m */; };
+		4F9E10C219C36EEC0058DDD3 /* DecisionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E10C119C36EEC0058DDD3 /* DecisionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,10 @@
 		4F81F8CA19C36BE7000F58D7 /* DoubleElminationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DoubleElminationTests-Info.plist"; sourceTree = "<group>"; };
 		4F81F8CC19C36BE7000F58D7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4F81F8CE19C36BE7000F58D7 /* DoubleElminationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DoubleElminationTests.m; sourceTree = "<group>"; };
+		4F9E10BD19C36EB20058DDD3 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		4F9E10BE19C36EB20058DDD3 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		4F9E10C019C36EEC0058DDD3 /* DecisionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecisionViewController.h; sourceTree = "<group>"; };
+		4F9E10C119C36EEC0058DDD3 /* DecisionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecisionViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +118,8 @@
 		4F81F8A919C36BE7000F58D7 /* DoubleElmination */ = {
 			isa = PBXGroup;
 			children = (
+				4F9E10BC19C36E980058DDD3 /* Managers */,
+				4F9E10BB19C36E8F0058DDD3 /* ViewControllers */,
 				4F81F8B219C36BE7000F58D7 /* AppDelegate.h */,
 				4F81F8B319C36BE7000F58D7 /* AppDelegate.m */,
 				4F81F8B519C36BE7000F58D7 /* Main.storyboard */,
@@ -150,6 +158,24 @@
 				4F81F8CB19C36BE7000F58D7 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4F9E10BB19C36E8F0058DDD3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4F9E10BD19C36EB20058DDD3 /* MainViewController.h */,
+				4F9E10BE19C36EB20058DDD3 /* MainViewController.m */,
+				4F9E10C019C36EEC0058DDD3 /* DecisionViewController.h */,
+				4F9E10C119C36EEC0058DDD3 /* DecisionViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4F9E10BC19C36E980058DDD3 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,9 +274,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F9E10C219C36EEC0058DDD3 /* DecisionViewController.m in Sources */,
 				4F81F8BA19C36BE7000F58D7 /* ViewController.m in Sources */,
 				4F81F8B419C36BE7000F58D7 /* AppDelegate.m in Sources */,
 				4F81F8B019C36BE7000F58D7 /* main.m in Sources */,
+				4F9E10BF19C36EB20058DDD3 /* MainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
