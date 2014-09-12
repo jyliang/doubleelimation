@@ -39,6 +39,11 @@
 		4F9E10EF19C3791B0058DDD3 /* TeamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E10EE19C3791B0058DDD3 /* TeamManager.m */; };
 		4F9E10F319C382660058DDD3 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E10F219C382660058DDD3 /* Game.m */; };
 		4F9E10F619C382C90058DDD3 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E10F519C382C90058DDD3 /* GameManager.m */; };
+		4F9E10F919C385210058DDD3 /* NSArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E10F819C385210058DDD3 /* NSArray+Additions.m */; };
+		4F9E10FC19C3874C0058DDD3 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E10FB19C3874C0058DDD3 /* Utility.m */; };
+		4F9E110019C389D20058DDD3 /* TeamImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E10FF19C389D20058DDD3 /* TeamImageView.m */; };
+		4F9E110319C38A270058DDD3 /* TeamBracketView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E110219C38A270058DDD3 /* TeamBracketView.m */; };
+		4F9E110619C38AB70058DDD3 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E110519C38AB70058DDD3 /* UIImageView+AFNetworking.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +112,16 @@
 		4F9E10F219C382660058DDD3 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		4F9E10F419C382C90058DDD3 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		4F9E10F519C382C90058DDD3 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
+		4F9E10F719C385210058DDD3 /* NSArray+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Additions.h"; sourceTree = "<group>"; };
+		4F9E10F819C385210058DDD3 /* NSArray+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Additions.m"; sourceTree = "<group>"; };
+		4F9E10FA19C3874C0058DDD3 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		4F9E10FB19C3874C0058DDD3 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		4F9E10FE19C389D20058DDD3 /* TeamImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamImageView.h; sourceTree = "<group>"; };
+		4F9E10FF19C389D20058DDD3 /* TeamImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamImageView.m; sourceTree = "<group>"; };
+		4F9E110119C38A270058DDD3 /* TeamBracketView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamBracketView.h; sourceTree = "<group>"; };
+		4F9E110219C38A270058DDD3 /* TeamBracketView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamBracketView.m; sourceTree = "<group>"; };
+		4F9E110419C38AB70058DDD3 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		4F9E110519C38AB70058DDD3 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +181,7 @@
 		4F81F8A919C36BE7000F58D7 /* DoubleElmination */ = {
 			isa = PBXGroup;
 			children = (
+				4F9E10FD19C389C10058DDD3 /* View */,
 				4F9E10CB19C379060058DDD3 /* External */,
 				4F9E10C719C377B80058DDD3 /* Utilities */,
 				4F9E10C319C376B40058DDD3 /* Model */,
@@ -250,6 +266,10 @@
 			children = (
 				4F9E10C819C377C90058DDD3 /* ValidationUtility.h */,
 				4F9E10C919C377C90058DDD3 /* ValidationUtility.m */,
+				4F9E10F719C385210058DDD3 /* NSArray+Additions.h */,
+				4F9E10F819C385210058DDD3 /* NSArray+Additions.m */,
+				4F9E10FA19C3874C0058DDD3 /* Utility.h */,
+				4F9E10FB19C3874C0058DDD3 /* Utility.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -267,6 +287,8 @@
 		4F9E10CC19C379060058DDD3 /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
+				4F9E110419C38AB70058DDD3 /* UIImageView+AFNetworking.h */,
+				4F9E110519C38AB70058DDD3 /* UIImageView+AFNetworking.m */,
 				4F9E10CD19C379060058DDD3 /* AFHTTPRequestOperation.h */,
 				4F9E10CE19C379060058DDD3 /* AFHTTPRequestOperation.m */,
 				4F9E10CF19C379060058DDD3 /* AFHTTPRequestOperationManager.h */,
@@ -288,6 +310,17 @@
 				4F9E10DF19C379060058DDD3 /* AFURLSessionManager.m */,
 			);
 			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		4F9E10FD19C389C10058DDD3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4F9E10FE19C389D20058DDD3 /* TeamImageView.h */,
+				4F9E10FF19C389D20058DDD3 /* TeamImageView.m */,
+				4F9E110119C38A270058DDD3 /* TeamBracketView.h */,
+				4F9E110219C38A270058DDD3 /* TeamBracketView.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,10 +425,14 @@
 				4F9E10C219C36EEC0058DDD3 /* DecisionViewController.m in Sources */,
 				4F9E10EF19C3791B0058DDD3 /* TeamManager.m in Sources */,
 				4F81F8BA19C36BE7000F58D7 /* ViewController.m in Sources */,
+				4F9E10FC19C3874C0058DDD3 /* Utility.m in Sources */,
+				4F9E10F919C385210058DDD3 /* NSArray+Additions.m in Sources */,
 				4F81F8B419C36BE7000F58D7 /* AppDelegate.m in Sources */,
 				4F9E10F619C382C90058DDD3 /* GameManager.m in Sources */,
 				4F9E10E919C379060058DDD3 /* AFURLResponseSerialization.m in Sources */,
+				4F9E110019C389D20058DDD3 /* TeamImageView.m in Sources */,
 				4F81F8B019C36BE7000F58D7 /* main.m in Sources */,
+				4F9E110319C38A270058DDD3 /* TeamBracketView.m in Sources */,
 				4F9E10E819C379060058DDD3 /* AFURLRequestSerialization.m in Sources */,
 				4F9E10E619C379060058DDD3 /* AFSecurityPolicy.m in Sources */,
 				4F9E10F319C382660058DDD3 /* Game.m in Sources */,
@@ -403,6 +440,7 @@
 				4F9E10EA19C379060058DDD3 /* AFURLSessionManager.m in Sources */,
 				4F9E10CA19C377C90058DDD3 /* ValidationUtility.m in Sources */,
 				4F9E10C619C376BF0058DDD3 /* Team.m in Sources */,
+				4F9E110619C38AB70058DDD3 /* UIImageView+AFNetworking.m in Sources */,
 				4F9E10E419C379060058DDD3 /* AFHTTPSessionManager.m in Sources */,
 				4F9E10BF19C36EB20058DDD3 /* MainViewController.m in Sources */,
 				4F9E10E519C379060058DDD3 /* AFNetworkReachabilityManager.m in Sources */,

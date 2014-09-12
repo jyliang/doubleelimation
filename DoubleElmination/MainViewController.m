@@ -9,12 +9,14 @@
 #import "MainViewController.h"
 #import "DecisionViewController.h"
 #import "TeamManager.h"
+#import "GameManager.h"
+#import "TeamImageView.h"
 
 #define kSegueIdentifierDecision @"decision"
 
 @interface MainViewController () <DecisionViewControllerDelegate, UIScrollViewDelegate>
 
-@property (nonatomic, strong) UIImageView *backetImageView;
+@property (nonatomic, strong) TeamImageView *bracketImageView;
 
 @end
 
@@ -34,7 +36,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initBracketImageView];
-    [[TeamManager sharedInstance] getTeamsWithCompletion:nil];
+    [[TeamManager sharedInstance] getTeamsWithCompletion:^(id object) {
+        NSArray *teams = [[TeamManager sharedInstance] teams];
+        if (teams.count == 8) {
+            [[GameManager sharedInstance] populateInitialTeams: teams];
+            [self.bracketImageView updateTeams];
+        } else {
+            [Utility showAlertMessage:@"Did not get 8 teams!"];
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,8 +55,8 @@
 
 - (void)initBracketImageView {
     UIImage *bracketImage = [UIImage imageNamed:@"bracket"];
-    self.backetImageView = [[UIImageView alloc] initWithImage:bracketImage];
-    [self.scrollView addSubview:self.backetImageView];
+    self.bracketImageView = [[TeamImageView alloc] initWithImage:bracketImage];
+    [self.scrollView addSubview:self.bracketImageView];
     self.scrollView.maximumZoomScale = 2;
     CGFloat minimumZoomScale = MIN(CGRectGetWidth(self.scrollView.frame)/bracketImage.size.width,CGRectGetHeight(self.scrollView.frame)/bracketImage.size.height);
     self.scrollView.minimumZoomScale = minimumZoomScale;
@@ -57,7 +67,8 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
     [view setBackgroundColor:[UIColor redColor]];
 
-    [self.backetImageView addSubview:view];
+    [self.bracketImageView addSubview:view];
+    [self.bracketImageView drawTeams];
 }
 
 
@@ -69,6 +80,8 @@
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:kSegueIdentifierDecision]) {
         DecisionViewController *vc = (DecisionViewController *)segue.destinationViewController;
+        Game *nextGame = (Game *)sender;
+        vc.game = nextGame;
         vc.decisionDelegate = self;
     }
 }
@@ -76,17 +89,22 @@
 
 #pragma mark - Actions
 - (IBAction)playButtonTapped:(id)sender {
-    [self performSegueWithIdentifier:kSegueIdentifierDecision sender:nil];
+    Game *nextGame = [[GameManager sharedInstance] getNextGame];
+    if (nextGame) {
+        [self performSegueWithIdentifier:kSegueIdentifierDecision sender:nextGame];
+    }
+
 }
 
 #pragma mark - DecisionViewControllerDelegate
-- (void)didSelectTeam {
+- (void)didSelectTeam:(Team *)team forGame:(Game *)game {
+    [[GameManager sharedInstance] updateGame:game withWinningTeam:team];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UISCrollViewDelegate
 - (UIView *) viewForZoomingInScrollView:(UIScrollView *)scrollView {
-    return self.backetImageView;
+    return self.bracketImageView;
 }
 
 @end

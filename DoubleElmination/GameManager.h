@@ -16,7 +16,8 @@
 + (GameManager *)sharedInstance;
 
 
-- (void)populateInitialTeams;
+- (void)populateInitialTeams:(NSArray *)teams;
 - (Game *)getNextGame;
+- (void)updateGame:(Game *)game withWinningTeam:(Team *)team;
 
 @end

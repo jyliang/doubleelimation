@@ -12,8 +12,13 @@
 
 @interface Game : NSObject
 
-@property (nonatomic, strong) Team *Team1;
-@property (nonatomic, strong) Team *Team2;
+@property (nonatomic, strong) Team *team1;
+@property (nonatomic, strong) Team *team2;
 @property (nonatomic, strong) Team *winningTeam; //is nill when the game is not played yet
+
+- (Team *)getWinner;
+- (Team *)getLoser;
+
+- (void)addTeam:(Team *)team;
 
 @end

@@ -53,10 +53,11 @@
                 [self parseTeams:responseObject];
             }
         }
-
         NSLog(@"JSON: %@", responseObject);
+        completion(nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
+        completion(nil);
     }];
 
     [manager.operationQueue addOperation:operation];
