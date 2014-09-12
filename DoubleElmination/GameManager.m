@@ -61,6 +61,9 @@
 - (Game *)getNextGame {
     for (Game *game in self.games) {
         if (game.winningTeam == nil) {
+            if (game.team1 == nil && game.team2 == nil) {
+                return nil;
+            }
             return game;
         }
     }
@@ -76,8 +79,8 @@
 - (void)scheduleGame:(NSInteger)index {
     NSString *selName = [NSString stringWithFormat:@"scheduleResultForGame%ld", index];
     SEL selector = NSSelectorFromString(selName);
-    [self performSelector:selector withObject:nil afterDelay:0];
-
+    [self performSelector:selector];
+    [self.delegate performSelector:@selector(updateGameMap)];
 }
 
 //HARD CODE LOGIC FOR NOW DUE TO LIMITED UNDERSTAND OF THE GAME
@@ -120,57 +123,47 @@
     Game *game = self.games[5];
     Game *gameForWinner = self.games[9];
     [gameForWinner addTeam:[game getWinner]];
-    Game *gameForLoser = self.games[5];
-    [gameForLoser addTeam:[game getLoser]];
 }
 - (void)scheduleResultForGame7 {
     Game *game = self.games[6];
     Game *gameForWinner = self.games[10];
     [gameForWinner addTeam:[game getWinner]];
-    Game *gameForLoser = self.games[5];
+    Game *gameForLoser = self.games[9];
     [gameForLoser addTeam:[game getLoser]];
 }
 - (void)scheduleResultForGame8 {
     Game *game = self.games[7];
     Game *gameForWinner = self.games[10];
     [gameForWinner addTeam:[game getWinner]];
-    Game *gameForLoser = self.games[5];
+    Game *gameForLoser = self.games[8];
     [gameForLoser addTeam:[game getLoser]];
 }
 - (void)scheduleResultForGame9 {
     Game *game = self.games[8];
     Game *gameForWinner = self.games[11];
     [gameForWinner addTeam:[game getWinner]];
-    Game *gameForLoser = self.games[5];
-    [gameForLoser addTeam:[game getLoser]];
 }
 - (void)scheduleResultForGame10 {
     Game *game = self.games[9];
     Game *gameForWinner = self.games[11];
     [gameForWinner addTeam:[game getWinner]];
-    Game *gameForLoser = self.games[5];
-    [gameForLoser addTeam:[game getLoser]];
 }
 - (void)scheduleResultForGame11 {
     Game *game = self.games[10];
     Game *gameForWinner = self.games[13];
     [gameForWinner addTeam:[game getWinner]];
-    Game *gameForLoser = self.games[5];
+    Game *gameForLoser = self.games[12];
     [gameForLoser addTeam:[game getLoser]];
 }
 - (void)scheduleResultForGame12 {
     Game *game = self.games[11];
     Game *gameForWinner = self.games[12];
     [gameForWinner addTeam:[game getWinner]];
-    Game *gameForLoser = self.games[5];
-    [gameForLoser addTeam:[game getLoser]];
 }
 - (void)scheduleResultForGame13 {
     Game *game = self.games[12];
     Game *gameForWinner = self.games[13];
     [gameForWinner addTeam:[game getWinner]];
-    Game *gameForLoser = self.games[5];
-    [gameForLoser addTeam:[game getLoser]];
 }
 - (void)scheduleResultForGame14 {
     Game *game = self.games[13];
@@ -179,7 +172,9 @@
         [game addTeam:[game getWinner]];
         [game addTeam:[game getLoser]];
     } else {
-        [Utility showAlertMessage:@"won!"];
+        Game *game = self.games[14];
+        game.winningTeam = [game getWinner];
+        [Utility showAlertMessage:[NSString stringWithFormat:@"%@ won!", game.getWinner.name]];
     }
 }
 
@@ -197,7 +192,8 @@
 }
 
 - (void)scheduleResultForGame15 {
-    [Utility showAlertMessage:@"won!"];
+    Game *game = self.games[14];
+    [Utility showAlertMessage:[NSString stringWithFormat:@"%@ won!", game.getWinner.name]];
 }
 
 

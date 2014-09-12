@@ -14,7 +14,7 @@
 
 #define kSegueIdentifierDecision @"decision"
 
-@interface MainViewController () <DecisionViewControllerDelegate, UIScrollViewDelegate>
+@interface MainViewController () <DecisionViewControllerDelegate, UIScrollViewDelegate, GameManagerDelegate>
 
 @property (nonatomic, strong) TeamImageView *bracketImageView;
 
@@ -69,6 +69,7 @@
 
     [self.bracketImageView addSubview:view];
     [self.bracketImageView drawTeams];
+    [GameManager sharedInstance].delegate = self;
 }
 
 
@@ -92,8 +93,14 @@
     Game *nextGame = [[GameManager sharedInstance] getNextGame];
     if (nextGame) {
         [self performSegueWithIdentifier:kSegueIdentifierDecision sender:nextGame];
+    } else {
+        [self restartGame];
     }
+}
 
+- (void)restartGame {
+    [[GameManager sharedInstance] populateInitialTeams:[TeamManager sharedInstance].teams];
+    [self.bracketImageView drawTeams];
 }
 
 #pragma mark - DecisionViewControllerDelegate
@@ -105,6 +112,12 @@
 #pragma mark - UISCrollViewDelegate
 - (UIView *) viewForZoomingInScrollView:(UIScrollView *)scrollView {
     return self.bracketImageView;
+}
+
+#pragma mark - GameManagerDelegate
+
+- (void)updateGameMap {
+    [self.bracketImageView updateTeams];
 }
 
 @end

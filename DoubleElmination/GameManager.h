@@ -9,9 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "Game.h"
 
+@protocol GameManagerDelegate <NSObject>
+
+- (void)updateGameMap;
+
+@end
+
 @interface GameManager : NSObject
 
 @property (nonatomic, strong) NSArray *games;
+
+@property (nonatomic, weak) id<GameManagerDelegate>delegate;
 
 + (GameManager *)sharedInstance;
 

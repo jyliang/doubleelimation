@@ -20,6 +20,7 @@
         self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetHeight(frame), CGRectGetHeight(frame))];
         [self addSubview:self.imageView];
         self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.imageView.frame), 0, CGRectGetWidth(frame)-CGRectGetWidth(self.imageView.frame), CGRectGetHeight(frame))];
+        self.nameLabel.adjustsFontSizeToFitWidth = YES;
         [self addSubview:self.nameLabel];
     }
     return self;
