@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView appearanceType="aqua" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hbo-Ce-Spc">
+                            <scrollView appearanceType="aqua" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hbo-Ce-Spc">
                                 <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </scrollView>
@@ -33,12 +33,6 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="hbo-Ce-Spc" secondAttribute="trailing" id="135-4D-b5w"/>
-                            <constraint firstItem="hbo-Ce-Spc" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="BZv-zc-g6g"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="hbo-Ce-Spc" secondAttribute="bottom" id="Hb4-Vb-Uob"/>
-                            <constraint firstItem="hbo-Ce-Spc" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="wZb-fC-Yzs"/>
-                        </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="CtI-0d-5aE"/>

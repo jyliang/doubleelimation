@@ -8,10 +8,13 @@
 
 #import "MainViewController.h"
 #import "DecisionViewController.h"
+#import "TeamManager.h"
 
 #define kSegueIdentifierDecision @"decision"
 
-@interface MainViewController () <DecisionViewControllerDelegate>
+@interface MainViewController () <DecisionViewControllerDelegate, UIScrollViewDelegate>
+
+@property (nonatomic, strong) UIImageView *backetImageView;
 
 @end
 
@@ -30,12 +33,31 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self initBracketImageView];
+    [[TeamManager sharedInstance] getTeamsWithCompletion:nil];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)initBracketImageView {
+    UIImage *bracketImage = [UIImage imageNamed:@"bracket"];
+    self.backetImageView = [[UIImageView alloc] initWithImage:bracketImage];
+    [self.scrollView addSubview:self.backetImageView];
+    self.scrollView.maximumZoomScale = 2;
+    CGFloat minimumZoomScale = MIN(CGRectGetWidth(self.scrollView.frame)/bracketImage.size.width,CGRectGetHeight(self.scrollView.frame)/bracketImage.size.height);
+    self.scrollView.minimumZoomScale = minimumZoomScale;
+    self.scrollView.delegate = self;
+    [self.scrollView setZoomScale:minimumZoomScale];
+
+
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+    [view setBackgroundColor:[UIColor redColor]];
+
+    [self.backetImageView addSubview:view];
 }
 
 
@@ -60,6 +82,11 @@
 #pragma mark - DecisionViewControllerDelegate
 - (void)didSelectTeam {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - UISCrollViewDelegate
+- (UIView *) viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return self.backetImageView;
 }
 
 @end
