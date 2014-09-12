@@ -46,6 +46,7 @@
 }
 
 - (void)populateInitialTeams:(NSArray *)teams {
+    [self initGames];
     NSMutableArray *allocationTeams = [NSMutableArray arrayWithArray:teams];
     Game *game;
     NSArray *pairTeams;
@@ -83,7 +84,7 @@
     [self.delegate performSelector:@selector(updateGameMap)];
 }
 
-//HARD CODE LOGIC FOR NOW DUE TO LIMITED UNDERSTAND OF THE GAME
+//HARD CODE LOGIC FOR NOW DUE TO LIMITED UNDERSTANDING OF THE GAME
 
 - (void)scheduleResultForGame1 {
     Game *game = self.games[0];
@@ -117,7 +118,7 @@
 - (void)scheduleResultForGame5 {
     Game *game = self.games[4];
     Game *gameForWinner = self.games[8];
-    [gameForWinner addTeam:[game getWinner]];
+    gameForWinner.team2 = [game getWinner];
 }
 - (void)scheduleResultForGame6 {
     Game *game = self.games[5];
@@ -168,13 +169,14 @@
 - (void)scheduleResultForGame14 {
     Game *game = self.games[13];
     if ([self isFirstLoss:[game getLoser]]) {
-        Game *game = self.games[14];
-        [game addTeam:[game getWinner]];
-        [game addTeam:[game getLoser]];
+        Game *gameForWinner = self.games[14];
+        [gameForWinner addTeam:[game getWinner]];
+        [gameForWinner addTeam:[game getLoser]];
     } else {
-        Game *game = self.games[14];
-        game.winningTeam = [game getWinner];
-        [Utility showAlertMessage:[NSString stringWithFormat:@"%@ won!", game.getWinner.name]];
+        Game *gameForWinner = self.games[14];
+        gameForWinner.winningTeam = [game getWinner];
+        gameForWinner.team1 = [game getWinner];
+        [self.delegate declareWinner:game.getWinner];
     }
 }
 
@@ -193,7 +195,7 @@
 
 - (void)scheduleResultForGame15 {
     Game *game = self.games[14];
-    [Utility showAlertMessage:[NSString stringWithFormat:@"%@ won!", game.getWinner.name]];
+    [self.delegate declareWinner:game.getWinner];
 }
 
 

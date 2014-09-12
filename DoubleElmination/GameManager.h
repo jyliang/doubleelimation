@@ -12,6 +12,7 @@
 @protocol GameManagerDelegate <NSObject>
 
 - (void)updateGameMap;
+- (void)declareWinner:(Team *)team;
 
 @end
 

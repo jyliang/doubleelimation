@@ -11,10 +11,11 @@
 #import "TeamManager.h"
 #import "GameManager.h"
 #import "TeamImageView.h"
+#import "Team.h"
 
 #define kSegueIdentifierDecision @"decision"
 
-@interface MainViewController () <DecisionViewControllerDelegate, UIScrollViewDelegate, GameManagerDelegate>
+@interface MainViewController () <DecisionViewControllerDelegate, UIScrollViewDelegate, GameManagerDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) TeamImageView *bracketImageView;
 
@@ -101,6 +102,7 @@
 - (void)restartGame {
     [[GameManager sharedInstance] populateInitialTeams:[TeamManager sharedInstance].teams];
     [self.bracketImageView drawTeams];
+    [self.bracketImageView updateTeams];
 }
 
 #pragma mark - DecisionViewControllerDelegate
@@ -118,6 +120,23 @@
 
 - (void)updateGameMap {
     [self.bracketImageView updateTeams];
+}
+
+- (void)declareWinner:(Team *)team {
+    NSString *title = [NSString stringWithFormat:@"Team %@ Wins!", team.name];
+    NSString *message = [NSString stringWithFormat:@"Team %@ was the tournament winner!! Play again?", team.name];
+
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+    [alertView show];
+
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        [self restartGame];
+    }
 }
 
 @end
