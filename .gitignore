@@ -1,0 +1,7 @@
+.DS_Store
+UserInterfaceState.xcuserstate
+*.orig
+*.xcbkptlist
+DoubleElmination.xcodeproj/xcuserdata/**/xcschemes/*
+
+DoubleElmination.xcodeproj/project.xcworkspace/xcuserdata/*
